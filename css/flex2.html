@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+        .boxs {
+
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-content: center;
+            flex-wrap: wrap;
+
+            box-sizing: border-box;
+            border: 1px solid red;
+            width: 1700px;
+            height: 1200px;
+        }
+
+        .box {
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+           
+            border: 1px solid red;
+            box-sizing: border-box;
+            margin: 20px;
+            width: 700px;
+            height: 900px;
+        }
+
+        .box1 {
+            display: flex;
+            justify-content: space-between;
+
+            align-items: flex-start;
+            flex-wrap: wrap;
+
+            box-sizing: border-box;
+            border: 1px solid red;
+            margin: 20px;
+            width: 90%;
+            height: 40%;
+        }
+
+        .box-a {
+
+            display: flex;
+            flex-direction: column;
+            justify-content: start;
+            flex-wrap: wrap;
+
+            border: 1px solid gray;
+            width: 100%;
+            height: 40%;
+        }
+
+        .box1-1 {
+
+            box-sizing: border-box;
+            border: 1px solid red;
+            
+            width: 100px;
+            height: 100px;
+        }
+
+
+        .box2 {
+
+            box-sizing: border-box;
+            border: 1px solid red;
+            margin: 20px;
+            width: 90%;
+            height: 40%;
+        }
+
+        
+
+    </style>
+</head>
+<body>
+    <div class="boxs">
+
+        <div class="box">
+
+            <div class="box1">
+                <div class="box-a">
+                    <div class="box1-1"></div>
+                    <div class="box1-1"></div>
+                </div>
+
+                <div class="box-a">
+                    <div class="box1-1"></div>
+                    <div class="box1-1"></div>
+                </div>
+                
+            </div>
+
+            <div class="box1">
+                <div class="box1-2"></div>
+            </div>
+
+        </div>
+
+        <div class="box">
+
+            <div class="box2">
+                <div class="box2-1"></div>
+                <div class="box2-1"></div>
+                <div class="box2-1"></div>
+                <div class="box2-1"></div>
+                <div class="box2-1"></div>
+                <div class="box2-1"></div>     
+            </div>
+
+            <div class="box2">
+                <div class="box2-2"></div>
+                <div class="box2-2"></div>
+                <div class="box2-2"></div>
+            </div>
+            
+        </div>
+    
+    </div>
+   
+     
+</body>
+</html>
