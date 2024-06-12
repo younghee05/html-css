@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        main input{
+            background-color: red;
+        }
+        main > input + input{
+            background-color: black;
+        }
+
+        div+input {
+            background-color: blue;
+        }
+        .name{
+            background-color: aqua;
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <input type="text">
+        <input type="text">
+    </main>
+    <div></div>
+    <input type="text" >
+
+    <!-- disabled : 입력불가 -->
+    <input type="text" disabled class="name">
+</body>
+
+</html>
