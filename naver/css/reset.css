@@ -1,0 +1,21 @@
+
+html, body {
+    height: 100%;
+}
+
+body, h1, ul, ol, button {
+    /* body의 margin을 없애주는 거 */
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* 모든 버튼에 pointer(커서모양)을 적용하겠다 */
+button {
+    
+    cursor: pointer;
+}
