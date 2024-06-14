@@ -105,45 +105,9 @@
     margin-top: -1px;
 }
 
-.form-item .check-box .title-area {
-    display: block;
-    padding: 0;
-}
-
 .title-area {
     position: relative;
     padding: 14px 45px 14px 14px;
-}
-
-.check-circle label::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 22px;
-    height: 22px;
-    background-image: url(https://ssl.pstatic.net/static/nid/join/m_sp_06_realname_48b1e603.png);
-    background-size: 372px 326px;
-    background-position: -342px -200px;
-    background-repeat: no-repeat;
-}
-
-.check-circle label {
-    display: block;
-    transform: translateY(-50%);
-    top: 50%;
-    position: relative;
-    padding-left: 28px;
-
-}
-
-.builnd {
-    position: absolute;
-    clip: rect(0 0 0 0);
-    width: 1px;
-    height: 1px;
-    margin: -1px;
-    overflow: hidden;
 }
 
 .form-item input[type="checkbox"],
