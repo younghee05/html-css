@@ -101,5 +101,13 @@ function getNewId() {
 }
 
 function handleUserCheck(e) {
-    e.target.checked = true;
+    const checkBoxList = document.querySelectorAll('input[type ="checkbox"]');
+    
+    for(let i = 0; i < checkBoxList.length; i++) {
+        const checkBox = checkBoxList[i];
+        if(e.target === checkBox) {
+            continue;
+        }
+        checkBox.cheked = false;
+    }
 }
