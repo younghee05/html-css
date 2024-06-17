@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" onkeydown="addText(event)">
+    <script>
+        const textInput = document.querySelector("input");
+        const lsTextList = localStorage.getItem("list");
+        console.log(lsTextList);
+        let textList = !lsTextList ? [] : JSON.parse(lsTextList); // null이면 null이 아니면 lsTextList의 값을 저장해라 
+
+        function addText(e) {
+            const textValue = e.target.value;
+            if(e.keyCode === 13) {
+                textList = [ ...textList, textValue ]; 
+                e.target.value = "";
+                console.log(textList);
+                localStorage.setItem("list", JSON.stringify(textList));
+            }
+        }
+
+        // localStorage: 브라우저를 껏다 켜도 데이터가 저장될 수 있게 해주는
+    </script>
+</body>
+</html>

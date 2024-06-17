@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="main-box">
+        <div id="input1">
+            <input type="text">
+        </div>
+        <div id="input2">
+            <input type="text">
+        </div>
+    </div>   
+    <div>
+        <button onclick="handleButtonClick(event);">확인</button>
+    </div>   
+    <script>
+        // body 가져오기 / document가 제일 최상위 객체
+        const bodyList = document.getElementsByTagName("body"); // body 리스트
+        const body = bodyList[0]; // body안에 하나의 객체를 불러온다 라는 뜻
+        // 태그명 가져오기
+        const mainBox = document.getElementsByTagName("div");
+        // main-box의 리스트 
+        const mainBoxList = body.getElementsByClassName("main-box"); // '.' 을 붙이지 않는다 / 이유: 클래스명을 가져온다고 명시되었기 때문 
+        const main_box = mainBoxList[0]
+        const input1 = mainBoxList[0].getElementsByTagName("div > input")
+
+        const input1_1 = document.getElementsByTagName("input");  
+        // const [ input1_1_1 ] = document.getElementsById("input1").getElementsByTagName("input");                      
+        
+        
+        console.log(bodyList);
+        console.log({body});
+        console.log({mainBox: bodyList[0]}); // 중괄호로 묶어버리면 객체가 된다 
+        console.log({mainBox: mainBoxList}); 
+        // console.log(input1_1_1);
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // <<< QuerySelector >>>
+
+        const input1_1_1_1 = document.querySelector("body #input1 > input");
+        console.log(input1_1_1_1);
+        const inputList = document.querySelectorAll("input");
+        console.log(inputList);
+        const input1_1_1_1_1 = document.querySelector("input");
+
+        //button 객체 들고오기
+        const button = document.querySelector("button");
+        
+        console.log(button.getAttribute("onclick"));
+        console.log(button.setAttribute("onclick", "alert('test');")); // onclick 속성안에 test로 바꿔라 
+        // getter setter 쓸 필요없다
+        console.log(button.onclick);
+        // onclick 안에 함수를 정의 할 수 있다 / 자바스크립트에서 이 방법을 많이씀 
+        // button.onclick = () => {
+        //     alert("test2");
+        // }
+       
+        // handleButtonClick 를 onclick에 대입시킴 
+        button.onclick = (e) => {
+            console.log(e);
+            const [ input_1, input_2] = document.querySelectorAll("input");
+
+            alert(`name: ${input_1.value}\n age: ${input_2.value}`);
+        }
+
+
+    </script>
+</body>
+</html>

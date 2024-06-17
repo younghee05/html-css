@@ -19,10 +19,17 @@
 </head>
 <body>
     <div>
+
+        <input type="text" class="name-input"
+            name="name" placeholder="name"
+            onkeydown="handleUserInputKeyDown(event)"
+        >
+
         <input type="text" class="username-input" 
             name="username" placeholder="username"
             onkeydown="handleUserInputKeyDown(event)"
         >
+
         <input type="text" class="password-input" 
             name="password" placeholder="password"
             onkeydown="handleUserInputKeyDown(event)"
@@ -32,12 +39,17 @@
     <table>
         <thead>
             <tr>
+                <th></th>
                 <th>번호</th>
+                <th>id</th>
+                <th>성명</th>
                 <th>사용자이름</th>
                 <th>비밀번호</th>
+                <th>삭제</th>
             </tr>
         </thead>
         <tbody class="user-table-body">
+            <!-- 자바스크립트로 채워 놓는 것 -->
 
         </tbody>
     </table>
