@@ -20,15 +20,15 @@ let user = {
 }
 
 function renderTable() {
-    const userTableBody = document.querySelector(".user-table-body"); // user-table-body를 들고옴
+    const userTableBody = document.querySelector(".user-table-body"); // user-table-body(tbody)를 들고옴
 
     // 반복돌리겠다
     userTableBody.innerHTML = userList.map(({id, name, username, password}, index) => { // map : 기존에 List에 있던걸 새로운 List로 옮기는 것 
         // tr -> 하나의 문자열로 설정하겠다 
         return `
             <tr>
-                <th><input type="checkbox" onchange="handleUserCheck(event)"></th>
-                <td>${index + 1}</td>
+                <th><input type="checkbox" onchange="handleUserCheck(event)" value="${id}"></th>
+                <td>${index + 1}</td>  
                 <td>${id}</td>
                 <td>${name}</td>
                 <td>${username}</td>
@@ -61,18 +61,36 @@ function handleUserInputKeyDown(e) {
         }
 
         if(e.target.name === "password") {
-            userList = [ ...userList, { ...user, id: getNewId() } ]; // 새로운 정보를 추가
+            if(inputMode === 1) {
+                const newUser = {
+                    ...user,
+                    id: getNewId()
+                }
+                // 새로운 정보를 추가
+                userList = [ ...userList, { ...user, newUser } ]; 
+            }
 
-            saveUserList(); // 저장시킨거
+            if(inputMode === 2) {
+                let findIndex = -1;
+                for(let i = 0; i < userList.length; i++) {
+                    if(userList[i].id === user.id) {
+                        findIndex = i;
+                        break;
+                    }
+                }
+                if(findIndex === -1) {
+                    alert("사용자 정보 수정 중 오류 발생. 관리자에게 문의하세요.");
+                    return;
+                }
+                userList[ findIndex ] = user;
+            }
+
+            saveUserList(); // UserList를 저장시킨거
             renderTable();
-
-            nameInput.value = emptyUser.name;
-            usernameInput.value = emptyUser.username;
-            passwordInput.value = emptyUser.password;
+            clearInputValue();
 
             nameInput.focus();
-            
-         
+        
         }
 
     }
@@ -96,18 +114,61 @@ function deleteUser(e) {
 
 function getNewId() {
     const userIds = userList.map(user => user.id);
-    const maxUserId = userIds.length === 0 ? 20240000 : Math.max.apply(null, userIds);
+    const maxUserId = userIds.length === 0 ? 20240000 : Math.max.apply(null, userIds); // null은 그자리에 고정값
     return maxUserId + 1;
 }
 
 function handleUserCheck(e) {
-    const checkBoxList = document.querySelectorAll('input[type ="checkbox"]');
-    
-    for(let i = 0; i < checkBoxList.length; i++) {
-        const checkBox = checkBoxList[i];
-        if(e.target === checkBox) {
+    const checkBoxList = document.querySelectorAll("input[type ='checkbox']");
+
+    // : 대신 of를 씀
+    for(let checkBox of checkBoxList) {
+        if(checkBox === e.target) {
             continue;
         }
-        checkBox.cheked = false;
+        checkBox.checked = false;
+    }
+
+    // 수정모드
+    if(e.target.checked) {
+        inputMode = 2;
+        const [ findUser ] = userList.filter(user => user.id === parseInt(e.target.value));
+        setInputValue(findUser);
+        user = {
+            ...findUser
+        }
+
+        return;
+    }
+
+    clearInputValue();
+    
+}
+
+function setInputValue(user) {
+    
+    const nameInput = document.querySelector(".name-input");
+    const usernameInput = document.querySelector(".username-input");
+    const passwordInput = document.querySelector(".password-input");
+    
+    nameInput.value = user.name;
+    usernameInput.value = user.username;
+    passwordInput.value = user.password;
+}
+
+function clearInputValue() {
+
+    const nameInput = document.querySelector(".name-input");
+    const usernameInput = document.querySelector(".username-input");
+    const passwordInput = document.querySelector(".password-input");
+
+    nameInput.value = emptyUser.name;
+    usernameInput.value = emptyUser.username;
+    passwordInput.value = emptyUser.password;
+
+
+    inputMode = 1;
+    user = {
+        ...emptyUser
     }
 }
